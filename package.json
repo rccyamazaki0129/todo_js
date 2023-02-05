@@ -1,0 +1,24 @@
+{
+  "name": "todo_js",
+  "version": "1.0.0",
+  "description": "TODO desktop app with Electron",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "electron ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rccyamazaki0129/todo_js.git"
+  },
+  "keywords": [],
+  "author": "Rei.Y",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rccyamazaki0129/todo_js/issues"
+  },
+  "homepage": "https://github.com/rccyamazaki0129/todo_js#readme",
+  "devDependencies": {
+    "electron": "^22.2.0"
+  }
+}
