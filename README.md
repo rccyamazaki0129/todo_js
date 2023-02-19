@@ -5,6 +5,9 @@ TODO desktop application using Electron.
 ### install Electron
 ```npm install --save-dev electron```
 
+## How to start
+```npm start```
+
 ## Incoming feature
  - add task note
  - save tasks
