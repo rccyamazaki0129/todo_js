@@ -13,6 +13,7 @@ TODO desktop application using Electron.
     - ```npm run make```
  - Windows
     - ```npx electron-builder --win --x64```
+    - ```npm run package-win```
 
 ## Incoming feature
  - add task note
