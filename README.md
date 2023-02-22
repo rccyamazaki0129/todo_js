@@ -1,4 +1,4 @@
-# todo_js
+# MyToDo
 TODO desktop application using Electron.
 
 ## How to install
@@ -10,10 +10,12 @@ TODO desktop application using Electron.
 
 ## Incoming feature
  - add task note
- - save tasks
- - import tasks from a local file
+ - ~~save tasks~~
+ - ~~import tasks from a local file~~
+ - ~~dark mode~~
  - add added-time to tasks
  - export achievement logs.
+
 
 ## Author
 Rei.Y

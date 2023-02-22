@@ -1,18 +1,20 @@
+body{
+    background-color: black;
+}
 #wrapper{
-    width: 80%;
-    margin: 15px 15px;
+    margin: 1px;
     border-radius: 6px;
-    box-shadow: 0px 1px 6px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 1px 6px rgba(149, 149, 149, 0.2);
     box-sizing: border-box;
     padding: 0 0 20px;
     overflow: hidden;
-    border: 1px solid lightgrey;
-    color: rgb(50, 49, 49);
-    background-color: rgb(236, 233, 233);
+    border: 1px solid rgb(82, 82, 82);
+    color: rgb(233, 233, 233);
+    background-color: rgb(45, 45, 45);
 }
 
 #page-banner{
-    background: rgb(207, 207, 207);
+    background: rgb(28, 28, 28);
     padding: 10px 0;
 }
 
@@ -28,7 +30,9 @@
     font-size: 16px;
     margin-top: 10px;
     margin-left: 3vw;
-    border: 1px solid #ddd;
+    background-color: rgb(81, 81, 81);
+    color: #dedede;
+    border: 1px solid #393939;
     border-radius: 4px;
     padding: 8px;
 }
@@ -65,9 +69,23 @@ li{
     padding: 20px;
     border-left: 5px solid #63c6fb;
     margin: 20px 10px;
-    background-color: #fff;
+    background-color: #585858;
     box-shadow: 0px 1px 6px rgba(0, 0, 0, 0.2);
     box-sizing: border-box;
+    word-break: break-word;
+    cursor: grab;
+}
+
+.is-dragging{
+    scale: 1.018;
+    padding: 20px;
+    border-left: 5px solid #63c6fb;
+    margin: 20px 10px;
+    background-color: #3d3c3c;
+    box-shadow: 0px 1px 6px rgba(0, 0, 0, 0.2);
+    box-sizing: border-box;
+    word-break: break-word;
+    cursor: grabbing;
 }
 
 li:hover{
@@ -75,7 +93,6 @@ li:hover{
 }
 
 li span{
-    width: 5vw;
     word-wrap: break-word;
 }
 
@@ -84,7 +101,7 @@ li button{
     appearance: none;
     border: 0;
     border-radius: 5px;
-    background: #4e4d4d;
+    background: #1e1e1e;
     color: #fff;
     padding: 8px 8px;
     font-size: 16px;
@@ -104,7 +121,7 @@ h2{
     padding: 10px;
     border-left: 5px solid #02517b;
     margin: 10px 10px;
-    background-color: #eeebeb;
+    background-color: #131313;
     box-shadow: 0px 1px 6px rgba(0, 0, 0, 0.2);
     box-sizing: border-box;
 }
@@ -114,7 +131,7 @@ h2{
     appearance: none;
     border: 0;
     border-radius: 5px;
-    background: #ffffff;
+    background: #797878;
     color: #2d2d2d;
     float: center;
     font-size: 20px;
