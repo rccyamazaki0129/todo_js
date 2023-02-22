@@ -8,6 +8,12 @@ TODO desktop application using Electron.
 ## How to start
 ```npm start```
 
+## How to build
+ - Mac
+    - ```npm run make```
+ - Windows
+    - ```npx electron-builder --win --x64```
+
 ## Incoming feature
  - add task note
  - ~~save tasks~~
