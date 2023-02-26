@@ -9,49 +9,16 @@ const task_list_zone = window.document.querySelector('#task-list');
 window.onload = () => {
     const task_arr = Array.from(task_list_storage);
     task_arr.forEach(function(task){
-        /* create a new list item element */
-        const new_task = window.document.createElement('li');
-        const new_task_item = window.document.createElement('span');
-        const new_task_done_btn = window.document.createElement('button');
-
-        /* add content */
-        new_task_item.className = 'task';
-        new_task_item.textContent = task;
-        new_task_done_btn.className = 'done';
-        new_task_done_btn.textContent = 'done';
-
-        /* add attribute */
-        new_task.setAttribute('draggable', true);
-
-        /* append the new task to the list */
-        new_task.appendChild(new_task_item);
-        new_task.appendChild(new_task_done_btn);
-        task_list.appendChild(new_task);
+        let new_task_item = createNewTaskItem(task);
+        task_list.appendChild(new_task_item);
     })
     
     const done_arr = Array.from(done_list_storage);
     done_arr.forEach(function(task){
-        /* create a new list item element */
-        const new_task = window.document.createElement('li');
-        const new_task_item = window.document.createElement('span');
-        const new_task_done_btn = window.document.createElement('button');
-
-        /* add content */
-        new_task_item.className = 'task';
-        new_task_item.textContent = task;
-        new_task_done_btn.className = 'done';
-        new_task_done_btn.textContent = 'done';
-
-        /* add attribute */
-        new_task.setAttribute('draggable', true);
-
-        /* append the new task to the list */
-        new_task.appendChild(new_task_item);
-        new_task.appendChild(new_task_done_btn);
-        new_task.querySelector('button').style.display = 'none';
-        done_list.appendChild(new_task);
+        let new_task_item = createNewTaskItem(task);
+        new_task_item.querySelector('button').style.display = 'none';
+        done_list.appendChild(new_task_item);
     })
-
 }
 
 /* move task to done list */
@@ -66,15 +33,19 @@ task_list.addEventListener('click', function(e){
     }
 });
 
-/* drag-sort */
+/* drag-sort(dragstart) */
 task_list.addEventListener('dragstart', function(e){
     e.target.classList.add("is-dragging");
     console.log(e.target);
 });
+
+/* drag-sort(dragend) */
 task_list.addEventListener('dragend', function(e){
     e.target.classList.remove("is-dragging");
     console.log(e.target);
 });
+
+/* drag-sort(dragover) */
 task_list_zone.addEventListener('dragover', function(e){
     e.preventDefault();
     const bottom_task = insertAboveTask(task_list_zone, e.clientY);
@@ -89,6 +60,7 @@ task_list_zone.addEventListener('dragover', function(e){
     }
 });
 
+/* drag-sort */
 function insertAboveTask(zone, mouseY){
     const not_dragging_tasks = zone.querySelectorAll('li:not(.is-dragging)');
     let closest_task = null;
@@ -108,26 +80,12 @@ function insertAboveTask(zone, mouseY){
 /* add new task */
 task_form.addEventListener('submit', (e) => {
     e.preventDefault();
+
     const new_task_value = task_form.querySelector('input[type="text"]').value;
     if (new_task_value == "") return;
-    /* create a new list item element */
-    const new_task = window.document.createElement('li');
-    const new_task_item = window.document.createElement('span');
-    const new_task_done_btn = window.document.createElement('button');
 
-    /* add content */
-    new_task_item.className = 'task';
-    new_task_item.textContent = new_task_value;
-    new_task_done_btn.className = 'done';
-    new_task_done_btn.textContent = 'done';
-
-    /* add attribute */
-    new_task.setAttribute('draggable', true);
-
-    /* append the new task to the list */
-    new_task.appendChild(new_task_item);
-    new_task.appendChild(new_task_done_btn);
-    task_list.appendChild(new_task);
+    let new_task_item = createNewTaskItem(new_task_value);
+    task_list.appendChild(new_task_item);
 
     /* save info to local strage */
     saveTodoToLocalStorage(new_task_value);
@@ -160,6 +118,7 @@ delete_btn.addEventListener('click', function(e){
     localStorage.setItem('done_list_storage', JSON.stringify(empty));
 });
 
+/* add done-task to done-list and delete it from task-list */
 function saveDoneToLocalStorage(data){
     done_list_storage.push(data);
     localStorage.setItem('done_list_storage', JSON.stringify(done_list_storage));
@@ -172,13 +131,54 @@ function saveDoneToLocalStorage(data){
         index++;
     })
     localStorage.setItem('task_list_storage', JSON.stringify(task_list_storage));
-    console.log("task_list_storage: " + task_list_storage);
-    console.log("done_list_storage: " + done_list_storage);
 }
 
+/* add task to task-list */
 function saveTodoToLocalStorage(new_task){
     task_list_storage.push(new_task);
     localStorage.setItem('task_list_storage', JSON.stringify(task_list_storage));
-    console.log("task_list_storage: " + task_list_storage);
-    console.log("done_list_storage: " + done_list_storage);
+}
+
+/* create task list item */
+function createNewTaskItem(task){
+    /* create a new list item element */
+    const new_task = window.document.createElement('li');
+    const new_task_item = window.document.createElement('span');
+    const new_task_done_btn = window.document.createElement('button');
+    let timestamp = createTimestamp();
+
+    /* add content */
+    new_task_item.className = 'task';
+    new_task_item.textContent = task;
+    new_task_done_btn.className = 'done';
+    new_task_done_btn.textContent = 'done';
+
+    /* add attribute */
+    new_task.setAttribute('draggable', true);
+
+    /* append the new task to the list */
+    new_task.appendChild(new_task_item);
+    new_task.appendChild(new_task_done_btn);
+    return new_task;
+}
+
+/* create timestamp */
+function createTimestamp(){
+    let today = new Date();
+    let year = today.getFullYear();
+    let month = today.getMonth() + 1;
+    let date = today.getDate();
+    let hour = today.getHours();
+    let min = today.getMinutes();
+    let sec = today.getSeconds();
+    let timestamp = 10000000000 * year + 100000000 * month + 1000000 * date + 10000 * hour + 100 * min + sec;
+    return timestamp;
+}
+
+/* create timestamp string */
+function createTimestampString(timestamp){
+    let timestamp_string;
+    let min = timestamp / 100 % 100;
+    timestamp_string = min.toString();
+    return timestamp_string;
 }

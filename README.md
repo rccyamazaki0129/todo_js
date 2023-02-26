@@ -21,7 +21,8 @@ TODO desktop application using Electron.
  - ~~import tasks from a local file~~
  - ~~dark mode~~
  - add added-time to tasks
- - export achievement logs.
+ - fix re-ordering problem when it's reloaded
+ - export achievement log
 
 
 ## Author

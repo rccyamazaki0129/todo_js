@@ -67,7 +67,7 @@ ul{
 
 li{
     padding: 20px;
-    border-left: 5px solid #63c6fb;
+    border-left: 5px solid #135fbb;
     margin: 20px 10px;
     background-color: #585858;
     box-shadow: 0px 1px 6px rgba(0, 0, 0, 0.2);
@@ -79,9 +79,9 @@ li{
 .is-dragging{
     scale: 1.018;
     padding: 20px;
-    border-left: 5px solid #63c6fb;
+    border-left: 5px solid #2564ab;
     margin: 20px 10px;
-    background-color: #3d3c3c;
+    background-color: #919191;
     box-shadow: 0px 1px 6px rgba(0, 0, 0, 0.2);
     box-sizing: border-box;
     word-break: break-word;
@@ -89,7 +89,7 @@ li{
 }
 
 li:hover{
-    border-left: 5px solid #2169ef;
+    border-left: 5px solid #55a0c2;
 }
 
 li span{
